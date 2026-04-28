@@ -1,0 +1,69 @@
+<div class="container">
+  <form [formGroup]="addBugForm" (ngSubmit)="onSubmit()">
+    <div class="head">
+      <h3>➕Add New Bug</h3>
+    </div>
+    <hr />
+    <div class="structure">
+      <label for="title">Title:</label>
+      <input type="text" id="title" placeholder="what's the Title" formControlName="title" />
+    </div>
+
+    <div class="structure">
+      <label for="description">Description:</label>
+      <input type="text" id="description" placeholder="Description" formControlName="description" />
+    </div>
+
+    <div class="structure">
+      <label for="priority">Priority:</label>
+      <select id="priority" formControlName="priority">
+        <option value="Low">🟢 Low</option>
+        <option value="Medium">🟡 Medium</option>
+        <option value="High">🔴 High</option>
+      </select>
+    </div>
+
+    <div class="structure">
+      <label for="category">Category:</label>
+      <select id="category" formControlName="category">
+        <option value="UI">UI</option>
+        <option value="Backend">Backend</option>
+        <option value="Database">Database</option>
+        <option value="API">API</option>
+      </select>
+    </div>
+
+    <div class="structure">
+      <label for="rootcause">RootCause:</label>
+      <select id="rootcause" formControlName="rootcause">
+        <option value="UI Issue">UI Issue</option>
+        <option value="Backend Logic">Backend Logic</option>
+        <option value="DB Error">DB Error</option>
+      </select>
+    </div>
+
+    <div class="structure">
+      <label for="status">Status:</label>
+      <select id="status" formControlName="status">
+        <option value="Open">Open</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Closed">Closed</option>
+      </select>
+    </div>
+
+    <div class="structure">
+      <label for="assignedTo">Assigned To:</label>
+      <select id="assignedTo" formControlName="assignedTo">
+        <option value="Prem">Prem</option>
+        <option value="Nitraj">Nitraj</option>
+        <option value="Pijaan">Pijaan</option>
+        <option value="Indrajit">Indrajit</option>
+      </select>
+    </div>
+
+    <div class="btn">
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+    </div>
+  </form>
+</div>
