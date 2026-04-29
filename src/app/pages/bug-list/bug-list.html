@@ -1,1 +1,42 @@
-<p>bug-list works!</p>
+<div class="container">
+  <div class="list">
+    <h2>🐞 Bugs</h2>
+    <button class="addBtn" type="submit" (click)="goToAdd()">+ Add Bug</button>
+  </div>
+  <hr />
+  <div class="listedData">
+    <table cellPadding="5">
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Priority</th>
+        <th>Action</th>
+      </tr>
+      @for (b of bugData(); track b.id) {
+        <tr>
+          <td>{{ b.id }}</td>
+          <td>{{ b.title }}</td>
+          <td>{{ b.status }}</td>
+          <td>
+            @if (b.priority === 'High') {
+              🔴
+            } @else {
+              @if (b.priority === 'Medium') {
+                🟡
+              } @else {
+                🟢
+              }
+            }
+            {{ b.priority }}
+          </td>
+          <td>
+            <button class="btnWidth" (click)="goToEdit(b.id)">Edit</button>
+            &nbsp;
+            <button class="btnWidth" (click)="removeBug(b.id)">Remove</button>
+          </td>
+        </tr>
+      }
+    </table>
+  </div>
+</div>

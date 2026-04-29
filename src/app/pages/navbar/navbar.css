@@ -1,0 +1,35 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(128, 0, 128, 0.3);
+  padding: 0 1rem 0 1rem;
+  border-radius: 0.5rem;
+}
+
+img {
+  height: 2rem;
+  width: 2rem;
+}
+
+button {
+  height: 2rem;
+  width: 6rem;
+  opacity: 0.7;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.text {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+span {
+  font-size: 18px;
+}

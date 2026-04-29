@@ -1,0 +1,23 @@
+.list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2.5rem;
+}
+
+.container {
+  background-color: rgba(128, 0, 128, 0.3);
+  border-radius: 0.5rem;
+  padding: 0 1rem 0 1rem;
+}
+
+.addBtn {
+  height: 1.5rem;
+  width: 6rem;
+  opacity: 0.7;
+}
+
+.btnWidth {
+  width: 4rem;
+  opacity: 0.7;
+}

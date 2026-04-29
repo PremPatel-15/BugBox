@@ -2,15 +2,20 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Bugreq } from '../../service/type';
 import { BugService } from '../../service/bug-service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-bug-form',
+  standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './bug-form.html',
   styleUrl: './bug-form.css',
 })
 export class BugForm {
-  constructor(private bugService: BugService) {}
+  constructor(
+    private bugService: BugService,
+    private route: ActivatedRoute,
+  ) {}
 
   addBugForm = new FormGroup({
     title: new FormControl(''),
@@ -21,6 +26,22 @@ export class BugForm {
     status: new FormControl('Open'),
     assignedTo: new FormControl('Prem'),
   });
+
+  bugId: number | undefined = undefined;
+
+  ngOnInit() {
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+
+      if (id) {
+        this.bugId = +id;
+
+        this.bugService.getBugById(this.bugId).subscribe((data) => {
+          this.addBugForm.patchValue(data);
+        });
+      }
+    });
+  }
 
   onSubmit() {
     const bugSend: Bugreq = {
@@ -33,8 +54,16 @@ export class BugForm {
       assignedTo: this.addBugForm.value.assignedTo ?? '',
     };
 
-    this.bugService.postBug(bugSend).subscribe((res) => {
-      console.log('Bug created:', res);
-    });
+    if (this.bugId) {
+      this.bugService.putBug(this.bugId, bugSend).subscribe((res) => {
+        console.log('Bug created:', res);
+      });
+    } else {
+      this.bugService.postBug(bugSend).subscribe((res) => {
+        console.log('Bug created:', res);
+      });
+    }
+
+    alert('Saved');
   }
 }

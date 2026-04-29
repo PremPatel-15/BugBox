@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { BugForm } from './pages/bug-form/bug-form';
+import { RouterOutlet } from '@angular/router';
+import { Sidebar } from './pages/sidebar/sidebar';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [BugForm],
+  imports: [Sidebar, RouterOutlet],
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
 })
