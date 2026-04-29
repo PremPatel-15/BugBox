@@ -13,7 +13,7 @@ export class Sidebar {
     this.router.navigate(['/dashboard']);
   }
   goToBugList() {
-    this.router.navigate(['/bugList']);
+    this.router.navigate(['/buglist']);
   }
   goToAdd() {
     this.router.navigate(['/add']);

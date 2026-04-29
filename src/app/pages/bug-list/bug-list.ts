@@ -27,10 +27,6 @@ export class BugList {
     });
   }
 
-  goToAdd() {
-    this.route.navigate(['/add']);
-  }
-
   goToEdit(id: number) {
     this.route.navigate(['/edit', id]);
   }
