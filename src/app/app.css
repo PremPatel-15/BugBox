@@ -4,20 +4,19 @@ app-sidebar {
 
 app-navbar {
   grid-area: navbar;
-  margin-left: 0.5rem;
-  margin-bottom: 0;
 }
 
 .outlet {
   grid-area: outlet;
-  margin-left: 0.5rem;
 }
 
 .container {
   display: grid;
-  grid-template-columns: 15rem 1fr 1fr 1fr;
+  grid-template-columns: 220px 1fr;
   grid-template-areas:
-    'sidebar navbar navbar navbar'
-    'sidebar outlet outlet outlet'
-    'sidebar outlet outlet outlet';
+    'sidebar navbar'
+    'sidebar outlet'
+    'sidebar outlet';
+  gap: 10px;
+  height: 91vh;
 }
