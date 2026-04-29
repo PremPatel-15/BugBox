@@ -10,6 +10,7 @@
         <th>Title</th>
         <th>Status</th>
         <th>Priority</th>
+        <th>Assigned to</th>
         <th>Action</th>
       </tr>
       @for (b of bugData(); track b.id) {
@@ -28,6 +29,9 @@
               }
             }
             {{ b.priority }}
+          </td>
+          <td>
+            {{ b.assignedTo }}
           </td>
           <td>
             <button class="btnWidth" (click)="goToEdit(b.id)">Edit</button>
