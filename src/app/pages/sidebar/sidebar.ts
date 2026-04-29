@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,4 +7,15 @@ import { Component } from '@angular/core';
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
 })
-export class Sidebar {}
+export class Sidebar {
+  constructor(private router: Router) {}
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
+  goToBugList() {
+    this.router.navigate(['/bugList']);
+  }
+  goToAdd() {
+    this.router.navigate(['/add']);
+  }
+}
