@@ -1,11 +1,35 @@
-<div class="dashboard">
-  <div class="card" *ngIf="chartData$ | async as chartData">
-    <h3>Bug Status</h3>
-    <canvas baseChart [data]="chartData" [type]="'pie'"></canvas>
-  </div>
-
-  <div class="card" *ngIf="chartData$ | async as chartData">
-    <h3>Another Chart</h3>
-    <canvas baseChart [data]="chartData" [type]="'bar'"></canvas>
-  </div>
+<div class="container">
+  <h2>📊 Dashboard</h2>
+  <table class="bugTable" cellPadding="8" border="1px solid white">
+    <tr>
+      <th>Bug Count</th>
+      <td>{{ bugCount() }}</td>
+    </tr>
+    <tr>
+      <th>Priority</th>
+      <td>
+        High: {{ priorityCount().highCount }}<br />
+        Medium: {{ priorityCount().mediumCount }}<br />
+        Low: {{ priorityCount().lowCount }}
+      </td>
+    </tr>
+    <tr>
+      <th>Status</th>
+      <td>
+        Open: {{ statusCount().openCount }}<br />
+        In Progress: {{ statusCount().inProgressCount }}<br />
+        Resolved: {{ statusCount().resolvedCount }}
+      </td>
+    </tr>
+    <tr>
+      <th>Developer</th>
+      <td>
+        @for (d of developerCount(); track $index) {
+          Developer: {{ d.developer }} <br />
+          Total Assigned Bug: {{ d.bugCount }}
+          <hr />
+        }
+      </td>
+    </tr>
+  </table>
 </div>

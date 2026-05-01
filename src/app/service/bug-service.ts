@@ -27,4 +27,29 @@ export class BugService {
   deleteBug(id: number) {
     return this.http.delete(`https://localhost:7167/bug/${id}`);
   }
+
+  bugCount() {
+    return this.http.get<number>(`https://localhost:7167/dashboard/bugcount`);
+  }
+
+  priorityCount() {
+    return this.http.get<{ highCount: number; mediumCount: number; lowCount: number }>(
+      `https://localhost:7167/dashboard/priority`,
+    );
+  }
+
+  statusCount() {
+    return this.http.get<{ openCount: number; inProgressCount: number; resolvedCount: number }>(
+      `https://localhost:7167/dashboard/status`,
+    );
+  }
+
+  developerCount() {
+    return this.http.get<
+      {
+        developer: string;
+        bugCount: number;
+      }[]
+    >(`https://localhost:7167/dashboard/developer`);
+  }
 }
