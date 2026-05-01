@@ -8,7 +8,7 @@ import { BugForm } from './pages/bug-form/bug-form';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [Sidebar, Navbar, RouterOutlet, BugList, BugForm, RouterLink],
+  imports: [Sidebar, Navbar, RouterOutlet],
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
 })

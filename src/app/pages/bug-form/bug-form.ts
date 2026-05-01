@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Bugreq } from '../../service/type';
 import { BugService } from '../../service/bug-service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-bug-form',
@@ -15,16 +15,17 @@ export class BugForm {
   constructor(
     private bugService: BugService,
     private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   addBugForm = new FormGroup({
-    title: new FormControl(''),
-    description: new FormControl(''),
-    priority: new FormControl('Low'),
-    category: new FormControl('UI'),
-    rootcause: new FormControl('UI Issue'),
-    status: new FormControl('Open'),
-    assignedTo: new FormControl('Prem'),
+    title: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    priority: new FormControl('Low', Validators.required),
+    category: new FormControl('UI', Validators.required),
+    rootcause: new FormControl('UI Issue', Validators.required),
+    status: new FormControl('Open', Validators.required),
+    assignedTo: new FormControl('Prem', Validators.required),
   });
 
   bugId: number | undefined = undefined;
@@ -36,8 +37,13 @@ export class BugForm {
       if (id) {
         this.bugId = +id;
 
-        this.bugService.getBugById(this.bugId).subscribe((data) => {
-          this.addBugForm.patchValue(data);
+        this.bugService.getBugById(this.bugId).subscribe({
+          next: (data) => {
+            this.addBugForm.patchValue(data);
+          },
+          error: (err) => {
+            console.log('Error: ', err);
+          },
         });
       }
     });
@@ -55,15 +61,26 @@ export class BugForm {
     };
 
     if (this.bugId) {
-      this.bugService.putBug(this.bugId, bugSend).subscribe((res) => {
-        console.log('Bug created:', res);
+      this.bugService.putBug(this.bugId, bugSend).subscribe({
+        next: (res) => {
+          console.log('Bug created:', res);
+        },
+        error: (err) => {
+          console.log('Bug created:', err);
+        },
       });
     } else {
-      this.bugService.postBug(bugSend).subscribe((res) => {
-        console.log('Bug created:', res);
+      this.bugService.postBug(bugSend).subscribe({
+        next: (res) => {
+          console.log('Bug created:', res);
+        },
+        error: (err) => {
+          console.log('Bug created:', err);
+        },
       });
     }
 
     alert('Saved');
+    this.router.navigate(['/buglist']);
   }
 }

@@ -13,7 +13,7 @@
         <th>Assigned to</th>
         <th>Action</th>
       </tr>
-      @for (b of bugData(); track b.id) {
+      @for (b of allBug$ | async; track b.id) {
         <tr>
           <td>{{ b.id }}</td>
           <td>{{ b.title }}</td>
@@ -21,12 +21,10 @@
           <td>
             @if (b.priority === 'High') {
               🔴
+            } @else if (b.priority === 'Medium') {
+              🟡
             } @else {
-              @if (b.priority === 'Medium') {
-                🟡
-              } @else {
-                🟢
-              }
+              🟢
             }
             {{ b.priority }}
           </td>
