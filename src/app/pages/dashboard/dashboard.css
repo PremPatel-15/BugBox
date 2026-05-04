@@ -7,3 +7,19 @@
 .bugTable td {
   border: 1px solid white;
 }
+.container {
+  background-color: rgba(128, 0, 128, 0.3);
+  gap: 10px;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  height: 100%;
+}
+
+.bugTable {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+h2 {
+  margin: 0rem 0 1rem 0;
+}

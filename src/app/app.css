@@ -17,6 +17,7 @@ app-navbar {
   grid-template-areas:
     'sidebar navbar'
     'sidebar outlet';
-  height: 91vh;
   gap: 10px;
+  height: 100%;
+  align-items: stretch;
 }
