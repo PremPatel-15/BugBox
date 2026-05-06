@@ -5,30 +5,52 @@
   background-color: rgba(128, 0, 128, 0.3);
   padding: 0 1rem 1rem 1rem;
   border-radius: 0.5rem;
-  width: fit-content;
 }
 
-.structure {
-  display: grid;
-  grid-template-columns: 6rem 8rem;
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ✅ Each label + input/select side by side */
+.field {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.field label {
+  width: 120px; /* fixed width — keeps all inputs aligned */
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.field input,
+.field select {
+  flex: 1; /* stretches to fill remaining width */
+  padding: 0.25rem 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
 }
 
 .btn {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin-top: 0.5rem;
 }
 
-.head {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  margin: -0.5rem;
+.btn button {
+  padding: 0.3rem 1.2rem;
+  border: 1px solid #888;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  background-color: white;
 }
 
-hr {
-  padding: 0;
+.btn button:hover {
+  background-color: #f0e0f0;
 }
