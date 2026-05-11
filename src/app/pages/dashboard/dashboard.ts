@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { BugService } from '../../service/bug-service';
+import { ButtonModule } from 'primeng/button';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [],
+  imports: [ButtonModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
