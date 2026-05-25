@@ -8,7 +8,11 @@ import { BugForm } from './pages/bug-form/bug-form';
 @Component({
   selector: 'app-root',
   standalone: true,
+<<<<<<< HEAD
   imports: [Sidebar, Navbar, RouterOutlet, BugList, BugForm],
+=======
+  imports: [Sidebar, Navbar, RouterOutlet],
+>>>>>>> solution/UIfixed
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
 })

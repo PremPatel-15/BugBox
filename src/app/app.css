@@ -18,5 +18,10 @@ app-navbar {
     'sidebar navbar'
     'sidebar outlet';
   gap: 10px;
+<<<<<<< HEAD
   height: 91vh;
+=======
+  height: 100%;
+  align-items: stretch;
+>>>>>>> solution/UIfixed
 }

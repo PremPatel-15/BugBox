@@ -1,1 +1,37 @@
-<p>dashboard works!</p>
+<div class="container">
+  <h2>📊 Dashboard</h2>
+  <table class="bugTable" cellPadding="8">
+    <tr>
+      <th>Bug Count</th>
+      <td>
+        <b>{{ bugCount() }}</b>
+      </td>
+    </tr>
+    <tr>
+      <th>Bug-count by Priority</th>
+      <td>
+        <b>High:&nbsp;&nbsp;</b>{{ priorityCount().highCount }}<br />
+        <b>Medium:&nbsp;&nbsp;</b>{{ priorityCount().mediumCount }}<br />
+        <b>Low:&nbsp;&nbsp;</b>{{ priorityCount().lowCount }}
+      </td>
+    </tr>
+    <tr>
+      <th>Bug-count by Status</th>
+      <td>
+        <b>Open:&nbsp;&nbsp;</b>{{ statusCount().openCount }}<br />
+        <b>In Progress:&nbsp;&nbsp;</b>{{ statusCount().inProgressCount }}<br />
+        <b>Resolved:&nbsp;&nbsp;</b>{{ statusCount().resolvedCount }}
+      </td>
+    </tr>
+    <tr>
+      <th>Bug-count by Developer</th>
+      <td>
+        @for (d of developerCount(); track $index) {
+          <b>Developer:&nbsp;&nbsp;</b>{{ d.developer }} <br />
+          <b>Total Assigned Bug:&nbsp;&nbsp;</b>{{ d.bugCount }}
+          <hr />
+        }
+      </td>
+    </tr>
+  </table>
+</div>
